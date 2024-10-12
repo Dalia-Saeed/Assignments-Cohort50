@@ -1,3 +1,4 @@
+'use strict';
 /*------------------------------------------------------------------------------
 Full description at: https://github.com/HackYourFuture/Assignments/tree/main/1-JavaScript/Week4#exercise-4-observable
 
@@ -15,11 +16,11 @@ Complete the `createObservable()` function as follows:
 export function createObservable() {
   const subscribers = [];
   return {
-    subscribe(subscriber) {
-      // TODO complete this function
+    subscribe: function (subscriber) {
+      subscribers.push(subscriber);
     },
-    notify(message) {
-      // TODO complete this function
+    notify: function (message) {
+      subscribers.forEach((subscriber) => subscriber(message));
     },
   };
 }
