@@ -16,6 +16,7 @@ const NUM_ROWS = 40;
  * @property {number} x
  * @property {number} y
  * @property {boolean} alive
+ * @property {number} lifeTime
  * @property {boolean} [nextAlive]
  */
 
@@ -34,6 +35,7 @@ function createCell(x, y) {
     x,
     y,
     alive,
+    lifeTime: alive ? 1 : 0,
   };
 }
 
@@ -87,6 +89,17 @@ export function createGame(context, numRows, numColumns) {
 
     if (cell.alive) {
       // Draw living cell inside background
+      let opacity;
+      if (cell.lifeTime === 1) {
+        opacity = 0.25;
+      } else if (cell.lifeTime === 2) {
+        opacity = 0.5;
+      } else if (cell.lifeTime === 3) {
+        opacity = 0.75;
+      } else {
+        opacity = 1;
+      }
+
       context.fillStyle = `rgb(24, 215, 236)`;
       context.fillRect(
         cell.x * CELL_SIZE + 1,
@@ -155,6 +168,11 @@ export function createGame(context, numRows, numColumns) {
 
     // Apply the newly computed state to the cells
     forEachCell((cell) => {
+      if (cell.nextAlive) {
+        cell.lifeTime = cell.alive ? cell.lifeTime + 1 : 1;
+      } else {
+        cell.lifeTime = 0;
+      }
       cell.alive = cell.nextAlive ?? false;
     });
   }
