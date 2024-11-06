@@ -1,0 +1,21 @@
+*** Unit Test Error Report ***
+
+ PASS  .dist/3-UsingAPIs/Week1/unit-tests/ex2-checkDoubleDigits.test.js
+  api-wk1-ex2-checkDoubleDigits
+    ✅ should exist and be executable (3 ms)
+    ✅ should have all TODO comments removed
+    ✅ `checkDoubleDigits` should not contain unneeded console.log calls (1 ms)
+    ✅ should call new Promise()
+    ✅ `resolve()` should be called with a one argument
+    ✅ `reject()` should be called with a one argument (1 ms)
+    ✅ should be a function that takes a single argument
+    ✅ (9) should return a rejected promise with an Error object (1 ms)
+    ✅ (10) should return a promise that resolves to "This is a double digit number!" (2 ms)
+    ✅ (99) should return a promise that resolves to "This is a double digit number!" (1 ms)
+    ✅ (100) should return a rejected promise with an Error object
+
+Test Suites: 1 passed, 1 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        2.717 s
+Ran all test suites matching /\/Users\/hackyourfuture\/Desktop\/Assignments-Cohort50\/.dist\/3-UsingAPIs\/Week1\/unit-tests\/ex2-checkDoubleDigits.test.js/i.

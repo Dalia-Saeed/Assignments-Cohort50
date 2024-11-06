@@ -1,0 +1,34 @@
+*** Unit Test Error Report ***
+
+Command failed: npx jest /Users/hackyourfuture/Desktop/Assignments-Cohort50/.dist/3-UsingAPIs/Week1/unit-tests/ex4-pokerDiceAll.test.js --colors --noStackTrace --json
+ FAIL  .dist/3-UsingAPIs/Week1/unit-tests/ex4-pokerDiceAll.test.js
+  api-wk1-ex4-pokerDiceAll
+    ✅ should exist and be executable (3 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ `rollDice` should not contain unneeded console.log calls (1 ms)
+    ✅ should use `dice.map()` (1 ms)
+    ✅ should use `Promise.all()`
+    ❌ should resolve when all dice settle successfully (3 ms)
+    ❌ should reject with an Error when a die rolls off the table (1 ms)
+
+  ● api-wk1-ex4-pokerDiceAll › should resolve when all dice settle successfully
+
+    TypeError: rollDie is not a function
+
+  ● api-wk1-ex4-pokerDiceAll › should resolve when all dice settle successfully
+
+    expect.assertions(4)
+
+    Expected four assertions to be called but received one assertion call.
+
+  ● api-wk1-ex4-pokerDiceAll › should reject with an Error when a die rolls off the table
+
+    expect.assertions(3)
+
+    Expected three assertions to be called but received two assertion calls.
+
+Test Suites: 1 failed, 1 total
+Tests:       2 failed, 5 passed, 7 total
+Snapshots:   0 total
+Time:        1.559 s
+Ran all test suites matching /\/Users\/hackyourfuture\/Desktop\/Assignments-Cohort50\/.dist\/3-UsingAPIs\/Week1\/unit-tests\/ex4-pokerDiceAll.test.js/i.
