@@ -1,26 +1,19 @@
 *** Unit Test Error Report ***
 
-Command failed: npx jest /Users/hackyourfuture/Desktop/Assignments-Cohort50/.dist/3-UsingAPIs/Week1/unit-tests/ex1-johnWho.test.js --colors --noStackTrace --json
- FAIL  .dist/3-UsingAPIs/Week1/unit-tests/ex1-johnWho.test.js
+ PASS  .dist/3-UsingAPIs/Week1/unit-tests/ex1-johnWho.test.js
   api-wk1-ex1-johnWho
-    ✅ should exist and be executable (5 ms)
-    ❌ should have all TODO comments removed (1 ms)
-    ✅ `getAnonName` should not contain unneeded console.log calls (2 ms)
-    ✅ should call `new Promise()`
+    ✅ should exist and be executable (2 ms)
+    ✅ should have all TODO comments removed (1 ms)
+    ✅ `getAnonName` should not contain unneeded console.log calls (1 ms)
+    ✅ should call `new Promise()` (1 ms)
     ✅ should take a single argument (1 ms)
     ✅ `resolve()` should be called with a one argument
     ✅ `reject()` should be called with a one argument
     ✅ should resolve when called with a string argument (2 ms)
     ✅ should reject with an Error object when called without an argument (1 ms)
 
-  ● api-wk1-ex1-johnWho › should have all TODO comments removed
-
-    expect(received).toBeFalsy()
-
-    Received: true
-
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 8 passed, 9 total
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
 Snapshots:   0 total
-Time:        3.875 s
+Time:        0.776 s, estimated 1 s
 Ran all test suites matching /\/Users\/hackyourfuture\/Desktop\/Assignments-Cohort50\/.dist\/3-UsingAPIs\/Week1\/unit-tests\/ex1-johnWho.test.js/i.

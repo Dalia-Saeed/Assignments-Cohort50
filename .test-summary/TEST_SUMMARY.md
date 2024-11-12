@@ -6,8 +6,8 @@
 
 |       Exercise        | Passed | Failed | ESLint |
 |-----------------------|--------|--------|--------|
-| ex1-johnWho           |   8    |   1    |   ✓    |
+| ex1-johnWho           |   9    |   -    |   ✓    |
 | ex2-checkDoubleDigits |   11   |   -    |   ✓    |
-| ex3-rollDie           |   6    |   1    |   ✓    |
-| ex4-pokerDiceAll      |   5    |   2    |   ✓    |
-| ex5-pokerDiceChain    |   3    |   2    |   ✓    |
+| ex3-rollDie           |   7    |   -    |   ✓    |
+| ex4-pokerDiceAll      |   7    |   -    |   ✓    |
+| ex5-pokerDiceChain    |   5    |   -    |   ✓    |

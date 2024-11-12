@@ -24,8 +24,7 @@ exercise file.
 
 // The line below makes the rollDie() function available to this file.
 // Do not change or remove it.
-const rollDie = require('../../helpers/pokerDiceRoller');
-
+import { rollDie } from '../../helpers/pokerDiceRoller.js';
 export function rollDice() {
   const dice = [1, 2, 3, 4, 5];
   const dicePromises = dice.map((die) => rollDie(die));

@@ -10,10 +10,9 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/3-U
   explanation? Add your answer as a comment to be bottom of the file.
 ------------------------------------------------------------------------------*/
 
-// TODO Remove callback and return a promise
 export function rollDie() {
+  // Compute a random number of rolls (3-10) that the die MUST complete
   return new Promise((resolve, reject) => {
-    // Compute a random number of rolls (3-10) that the die MUST complete
     const randomRollsToDo = Math.floor(Math.random() * 8) + 3;
     console.log(`Die scheduled for ${randomRollsToDo} rolls...`);
 
@@ -45,8 +44,12 @@ export function rollDie() {
 
 function main() {
   rollDie()
-    .then((value) => console.log(`Success! Die settled on ${value}.`))
-    .catch((error) => console.log(error.message));
+    .then((value) => {
+      console.log(`Success! Die settled on ${value}.`);
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 }
 
 // ! Do not change or remove the code below
