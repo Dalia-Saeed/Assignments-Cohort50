@@ -15,15 +15,18 @@ import { rollDie } from '../../helpers/pokerDiceRoller.js';
 
 export function rollDice() {
   const dice = [1, 2, 3, 4, 5];
-  // TODO complete this function; use Promise.race() and rollDie()
-  rollDie(1); // TODO placeholder: modify as appropriate
+  const dicePromises = dice.map((die) => rollDie(die));
+  return Promise.race(dicePromises);
 }
 
 // Refactor this function to use async/await and try/catch
-function main() {
-  rollDice()
-    .then((results) => console.log('Resolved!', results))
-    .catch((error) => console.log('Rejected!', error.message));
+async function main() {
+  try {
+    const result = await rollDice();
+    console.log('Resolved!', result);
+  } catch (error) {
+    console.log('Rejected!', error.message);
+  }
 }
 
 // ! Do not change or remove the code below

@@ -1,4 +1,5 @@
-'use strict';
+// const { factory } = require("typescript");
+
 /*------------------------------------------------------------------------------
 Full description at: https://github.com/HackYourFuture/Assignments/blob/main/3-UsingAPIs/Week2/README.md#exercise-1-programmer-fun
 
@@ -17,35 +18,35 @@ Full description at: https://github.com/HackYourFuture/Assignments/blob/main/3-U
    url with `.shx`. There is no server at the modified url, therefore this 
    should result in a network (DNS) error.
 ------------------------------------------------------------------------------*/
+const body = document.querySelector('body');
+
 async function requestData(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Error: ', response.status, response.statusText);
+  const result = await fetch(url);
+  if (!result.ok) {
+    throw new Error(`HTTP ${result.status}`);
   }
-  return await response.json();
+
+  const data = await result.json();
+  return data;
 }
 
 function renderImage(data) {
-  const img = document.createElement('img');
-  img.alt = data.title;
-  img.src = data.img;
-  document.body.appendChild(img);
+  body.innerHTML = '';
+  body.innerHTML = String.raw`<img src="${data.img}">`;
 }
 
 function renderError(error) {
-  const errorElement = document.createElement('h1');
-  errorElement.style.color = 'red';
-  errorElement.textContent = error;
-  document.body.appendChild(errorElement);
+  body.innerHTML = '';
+  body.innerHTML = String.raw`<h1>Error: ${error.message}</h1>`;
 }
 
-const main = async () => {
+async function main() {
   try {
     const data = await requestData('https://xkcd.now.sh/?comic=latest');
     renderImage(data);
   } catch (error) {
     renderError(error);
   }
-};
+}
 
 window.addEventListener('load', main);
