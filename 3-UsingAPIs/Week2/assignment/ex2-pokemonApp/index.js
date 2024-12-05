@@ -1,42 +1,56 @@
 'use strict';
 
 async function fetchData(url) {
-  try {
-    const response = await fetch(url);
-
-    if (!response.ok) {
-      throw new Error('Something went wrong!');
-    }
-
-    return await response.json();
-  } catch (error) {
-    console.log(error);
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error('Something went wrong!');
   }
+  return await response.json();
 }
 
 async function fetchAndPopulatePokemons(url) {
-  const data = await fetchData(url);
-  const select = document.querySelector('select');
-  if (select.length > 0) return;
+  try {
+    const data = await fetchData(url);
+    const select = document.querySelector('select');
 
-  data.results.forEach((element) => {
-    const option = document.createElement('option');
-    option.value = element.name;
-    option.textContent = element.name;
-    option.setAttribute('data-url', element.url);
-    select.appendChild(option);
-  });
+    // Clear existing options before populating
+    select.innerHTML = '';
+
+    data.results.forEach((element) => {
+      const option = document.createElement('option');
+      option.value = element.name;
+      option.textContent = element.name;
+      option.setAttribute('data-url', element.url);
+      select.appendChild(option);
+    });
+  } catch (error) {
+    console.log('Error fetching pokemons:', error);
+    // Optionally display an error message to the user
+    const errorMessage = document.createElement('p');
+    errorMessage.textContent = `Error loading Pokémon data: ${error.message}`;
+    document.body.appendChild(errorMessage);
+  }
 }
 
 async function fetchImage() {
-  if (document.querySelector('img')) document.querySelector('img').remove();
-  const img = document.createElement('img');
-  document.body.appendChild(img);
-  const select = document.querySelector('select');
-  const url = select.options[select.selectedIndex].getAttribute('data-url');
-  const elementData = await fetchData(url);
-  img.src = elementData.sprites.front_default;
-  img.alt = elementData.name;
+  try {
+    if (document.querySelector('img')) document.querySelector('img').remove();
+
+    const img = document.createElement('img');
+    document.body.appendChild(img);
+    const select = document.querySelector('select');
+    const url = select.options[select.selectedIndex].getAttribute('data-url');
+
+    const elementData = await fetchData(url);
+    img.src = elementData.sprites.front_default;
+    img.alt = elementData.name;
+  } catch (error) {
+    console.log('Error fetching image:', error);
+    // Optionally display an error message to the user
+    const errorMessage = document.createElement('p');
+    errorMessage.textContent = `Error loading Pokémon image: ${error.message}`;
+    document.body.appendChild(errorMessage);
+  }
 }
 
 function renderElements() {

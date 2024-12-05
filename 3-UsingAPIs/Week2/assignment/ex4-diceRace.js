@@ -33,3 +33,10 @@ async function main() {
 if (process.env.NODE_ENV !== 'test') {
   main();
 }
+/*
+  The reason some dice continue rolling after Promise.race() resolves is because 
+  Promise.race() only waits for the first promise to settle (either fulfilled or rejected). 
+  Once the first promise settles, Promise.race() resolves, but the other promises still 
+  continue executing independently unless explicitly canceled. This is why we see some 
+  dice still rolling after the race is over.
+*/

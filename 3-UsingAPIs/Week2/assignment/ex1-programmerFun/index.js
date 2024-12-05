@@ -32,12 +32,16 @@ async function requestData(url) {
 
 function renderImage(data) {
   body.innerHTML = '';
-  body.innerHTML = String.raw`<img src="${data.img}">`;
+  const img = document.createElement('img');
+  img.src = data.img;
+  body.appendChild(img);
 }
 
 function renderError(error) {
   body.innerHTML = '';
-  body.innerHTML = String.raw`<h1>Error: ${error.message}</h1>`;
+  const h1 = document.createElement('h1');
+  h1.textContent = `Error: ${error.message}`;
+  body.appendChild(h1);
 }
 
 async function main() {
