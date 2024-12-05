@@ -11,33 +11,27 @@ Full description at: https://github.com/HackYourFuture/Assignments/tree/main/3-U
 ------------------------------------------------------------------------------*/
 
 export function rollDie() {
-  // Compute a random number of rolls (3-10) that the die MUST complete
   return new Promise((resolve, reject) => {
     const randomRollsToDo = Math.floor(Math.random() * 8) + 3;
     console.log(`Die scheduled for ${randomRollsToDo} rolls...`);
 
     const rollOnce = (roll) => {
-      // Compute a random die value for the current roll
       const value = Math.floor(Math.random() * 6) + 1;
       console.log(`Die value is now: ${value}`);
 
-      // Use callback to notify that the die rolled off the table after 6 rolls
       if (roll > 6) {
         reject(new Error('Oops... Die rolled off the table.'));
       }
 
-      // Use callback to communicate the final die value once finished rolling
       if (roll === randomRollsToDo) {
         resolve(value);
       }
 
-      // Schedule the next roll todo until no more rolls to do
       if (roll < randomRollsToDo) {
         setTimeout(() => rollOnce(roll + 1), 500);
       }
     };
 
-    // Start the initial roll
     rollOnce(1);
   });
 }
@@ -56,3 +50,14 @@ function main() {
 if (process.env.NODE_ENV !== 'test') {
   main();
 }
+
+/*------------------------------------------------------------------------------
+### Does the problem described above still occur?
+
+No, the issue described earlier does not occur anymore. Here's why:
+- Promises ensure that either `resolve` or `reject` is called once, and further
+  code execution in the promise chain stops after that.
+- In the original code, even after an error callback was invoked, subsequent
+  rolls continued to trigger, resulting in a success callback being called too.
+  With Promises, `reject` immediately halts further execution of `.then` handlers.
+------------------------------------------------------------------------------*/
