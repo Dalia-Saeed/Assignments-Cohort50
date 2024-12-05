@@ -26,7 +26,8 @@ exercise file.
 // Do not change or remove it.
 import { rollDie } from '../../helpers/pokerDiceRoller.js';
 export function rollDice() {
-  const dicePromises = [1, 2, 3, 4, 5].map(rollDie);
+  const dice = [1, 2, 3, 4, 5];
+  const dicePromises = dice.map((die) => rollDie(die));
 
   return Promise.all(dicePromises);
 }
